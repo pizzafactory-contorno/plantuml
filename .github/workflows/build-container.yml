@@ -13,14 +13,16 @@ jobs:
     strategy:
       matrix:
         include:
+          # Can't support on linux/386, linux/arm/v6, linux/arm/v7, and linux/riscv64
+          # as no `openjdk-11-jre-headless` available.
           - tag: alpine
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
+            platforms: linux/amd64, linux/arm64/v8, linux/ppc64le, linux/s390x
           - tag: alpine-3.15.0
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
+            platforms: linux/amd64, linux/arm64/v8, linux/ppc64le, linux/s390x
           - tag: alpine-3.10
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
+            platforms: linux/amd64, linux/arm64/v8, linux/ppc64le, linux/s390x
           - tag: alpine-edge
-            platforms: linux/386, linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/riscv64, linux/s390x
+            platforms: linux/amd64, linux/arm64/v8, linux/ppc64le, linux/s390x
     steps:
       -
         name: Checkout
